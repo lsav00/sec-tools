@@ -73,7 +73,7 @@ Same comparison as above, but viewed in **bless hex editor**.
 
 ![alt text](pics/openssl-bless.PNG "hex dumps viewed in bless hex editor")
 
-## REFERENCES FOR THE PY SCRIPT
+#### References
 
 Sisso. (2012, Aug. 22). Stack Overflow. Convert bytes to a string? Retrieved from: https://stackoverflow.com/questions/606191/convert-bytes-to-a-string
 
