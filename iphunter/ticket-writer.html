@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<title>BamIP-Hunter</title>
+
+<body>
+<h1>BamIP-Hunter</h1>
+<!--Bam3 version adds regex and email input -->
+<!--Bam3a adds an email input that can input & display lots of text-->
+<!--Bam3b adds regex to find the any text and display it-->
+<!--Bam3b1 adds the email to the regex -->
+<!--Bam3b2 allows user to obtain multiple emails from the regex -->
+<!--Bam3c allows user to print sender, recipient and ip in ticket area -->
+<!--Bam3d adds input for intel and puts the Sender & Recipient return values on the same line-->
+
+
+
+<!--IP INPUT AREA-->
+IP: <input type="text" name="ip" id="ip">
+<button onclick="spiceworks(document.getElementById('ip').value)">SpiceWorks</button>
+<button onclick="alienvault(document.getElementById('ip').value)">AlienVault</button>
+<button onclick="ibmxforce(document.getElementById('ip').value)">IBM X-Force</button>
+<br>
+
+<!--Intel area-->
+Intel input: <input type="text" name="intel" id="intel">
+<br>
+
+<!--INPUT EMAIL-->
+Email: <input type="text" id="myEmail" ><br><br>
+<button onclick="emailme()">Print Ticket</button>
+<p></p>
+<p id="email">Sender: </p>
+<p id="email2">Recipient: </p>
+<strong>Ticket:</strong>
+<p id="ticket"></p>
+
+<p></p>
+
+
+<script>
+//IP HUNTER
+function spiceworks(ip) { window.open("https://community.spiceworks.com/tools/ip-lookup/results?hostname=" + ip);}
+function alienvault(ip) { window.open("https://otx.alienvault.com/browse/pulses?q=" + ip);}
+function ibmxforce(ip) { window.open("https://exchange.xforce.ibmcloud.com/ip/" + ip);}
+//EMAIL INPUT & DISPLAY
+function emailme() { 
+	var myip = document.getElementById("ip").value;
+	var myintel = document.getElementById("intel").value;
+	var x = document.getElementById("myEmail").value;
+	var patt = /\w+@\w+\.\w+/g;
+	var result = x.match(patt);
+	var arrayLength = result.length;
+	var sender = 0;
+	var rcpt = 1;
+	var myticket = "On ___, Larry reviewed the following email for PII and did not find any PII:<br><br>";
+	myticket += "Sender: " + result[sender] + "<br>";
+	myticket += "Recipient: "  + result[rcpt] + "<br><br>";
+	myticket += "Intel for " + myip + "<br>";
+	myticket += myintel + "<br><br>";
+	myticket += "Larry recommends returning the email to " + result[sender];
+	document.getElementById("email").innerHTML = "<strong>Sender: </strong>" + result[sender];
+	document.getElementById("email2").innerHTML = "<strong>Recipient: </strong>" + result[rcpt];
+	document.getElementById("ticket").innerHTML = myticket;
+		
+	
+}
+//fullname.innerHTML = salute + fname + lname
+//fullname.innerHTML = salute + ' ' + fname + ' ' + lname;
+//jump@me.com and you@me.com
+</script>
+
+
+
+</body>
+</html>
