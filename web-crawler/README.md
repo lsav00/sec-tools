@@ -2,7 +2,7 @@
 
 web_crawler prints `What domain do you want to spider? Include the protocol and make sure you have the correct address, please:` User enters, for example: `https:\\www.google.com `. Output:
 
-![alt text](webcrawler-output1.png "Description goes here")
+![alt text](webcrawler-output1.png)
 
 ![alt text](webcrawler-output2.PNG "Description goes here")
 
